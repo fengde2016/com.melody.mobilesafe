@@ -1,4 +1,4 @@
-package com.melody.commelodymobilesafe;
+package com.melody.mobilesafe;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

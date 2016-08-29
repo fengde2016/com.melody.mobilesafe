@@ -1,9 +1,9 @@
-package com.melody.commelodymobilesafe.activity;
+package com.melody.mobilesafe.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.melody.commelodymobilesafe.R;
+import com.melody.mobilesafe.R;
 
 /**
  * Created by fengd on 2016/8/28.

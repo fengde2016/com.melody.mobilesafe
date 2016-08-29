@@ -1,19 +1,26 @@
-package com.melody.commelodymobilesafe.activity;
+package com.melody.mobilesafe.activity;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.melody.commelodymobilesafe.R;
-import com.melody.commelodymobilesafe.presenter.SplashPresenter;
-import com.melody.commelodymobilesafe.presenter.impl.SplashPresenterImpl;
-import com.melody.commelodymobilesafe.view.SplashView;
+import com.melody.mobilesafe.R;
+import com.melody.mobilesafe.presenter.SplashPresenter;
+import com.melody.mobilesafe.presenter.impl.SplashPresenterImpl;
+import com.melody.mobilesafe.view.SplashView;
 
-public class SplashActivity extends AppCompatActivity implements SplashView{
+import java.security.Permission;
+import java.util.jar.Manifest;
+
+public class SplashActivity extends Activity implements SplashView{
 
     TextView mVersionName;
     SplashPresenter mSplashPresenter;
@@ -21,9 +28,21 @@ public class SplashActivity extends AppCompatActivity implements SplashView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        checkMyPermission();
         init();
     }
-//    初始化
+
+    private void checkMyPermission() {
+        int permission = getPackageManager().checkPermission("android.permission.WRITE_EXTERNAL_STORAGE", getString(R.string.packageName));
+        if(permission != PackageManager.PERMISSION_GRANTED)
+        {
+            Toast.makeText(this, "未获取读取权限",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "已获取读取权限",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //    初始化
     private void init() {
         mVersionName = (TextView)findViewById(R.id.tv_version_name);
         mSplashPresenter = new SplashPresenterImpl(this, this);
@@ -33,7 +52,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView{
 
     @Override
     public void setVersionName(String versionName) {
-        mVersionName.setText("版本号：" + versionName);
+        mVersionName.setText(getString(R.string.version_name) + String.valueOf(versionName));
     }
 
     @Override

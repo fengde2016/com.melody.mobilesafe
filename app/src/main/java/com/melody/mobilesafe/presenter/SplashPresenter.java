@@ -1,4 +1,4 @@
-package com.melody.commelodymobilesafe.presenter;
+package com.melody.mobilesafe.presenter;
 
 /**
  * Created by fengd on 2016/8/28.
@@ -13,4 +13,6 @@ public interface SplashPresenter {
     //    设置版本名称
     void setVersionName();
 
+    //    延时
+    void splashDelay();
 }

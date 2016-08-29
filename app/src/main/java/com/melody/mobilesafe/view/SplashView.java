@@ -1,4 +1,4 @@
-package com.melody.commelodymobilesafe.view;
+package com.melody.mobilesafe.view;
 
 /**
  * Created by fengd on 2016/8/28.

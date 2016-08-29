@@ -1,4 +1,4 @@
-package com.melody.commelodymobilesafe;
+package com.melody.mobilesafe;
 
 import org.junit.Test;
 
